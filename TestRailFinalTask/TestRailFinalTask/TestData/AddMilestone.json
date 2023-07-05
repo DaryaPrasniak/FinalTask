@@ -1,0 +1,8 @@
+{
+  "description": "Darya Test Milestone",
+  "is_completed": true,
+  "name": "July Test",
+  "project_id": 1,
+  "refs": "RF-1, RF-2",
+  "url": "http://testrail/index.php?/milestones/view/1"
+}
