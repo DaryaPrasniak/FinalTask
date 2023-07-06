@@ -14,16 +14,16 @@ namespace TestRailFinalTask.Tests.API
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        protected Milestone expectedMilestoneResponse = TestDataHelper.GetTestMilestone("GetMilestone.json");
-        protected Milestone expectedInvalidMilestoneResponse = TestDataHelper.GetTestMilestone("GetMilestoneInvalid.json");
-        protected Milestone expectedAddedMilestoneResponse = TestDataHelper.GetTestMilestone("AddMilestone.json");
+        protected Milestone getMilestoneResponse = TestDataHelper.GetTestMilestone("GetMilestone.json");
+        protected Milestone getInvalidMilestoneResponse = TestDataHelper.GetTestMilestone("GetMilestoneInvalid.json");
+        protected Milestone addedMilestoneResponse = TestDataHelper.GetTestMilestone("AddMilestone.json");
 
         [Test]
         public void GetMilestoneTest()
         {
             var actualMilestone = _milestoneService.GetAsMilestone("1");
 
-            Assert.AreEqual(actualMilestone.Name, expectedMilestoneResponse.Name);
+            Assert.AreEqual(actualMilestone.Name, getMilestoneResponse.Name);
         }
 
         [Test]
@@ -31,13 +31,21 @@ namespace TestRailFinalTask.Tests.API
         {
             var actualMilestone = _milestoneService.GetAsMilestone("1");
 
-            Assert.AreEqual(actualMilestone.Name, expectedInvalidMilestoneResponse.Name);
+            Assert.AreEqual(actualMilestone.Name, getInvalidMilestoneResponse.Name);
+        }
+
+        [Test]
+        public void GetMilestoneTestInvalidEndpoint()
+        {
+            var actualMilestone = _milestoneService.GetMilestoneInvalid("1");
+
+            Assert.AreEqual(actualMilestone.Name, getMilestoneResponse.Name);
         }
 
         [Test]
         public void AddMilestoneTest()
         {
-            var actualMilestone = _milestoneService.AddMilestone(expectedAddedMilestoneResponse.ProjectId, expectedAddedMilestoneResponse);
+            var actualMilestone = _milestoneService.AddMilestone(addedMilestoneResponse.ProjectId, addedMilestoneResponse);
 
             Assert.AreEqual(actualMilestone.Name, "July Test");
         }

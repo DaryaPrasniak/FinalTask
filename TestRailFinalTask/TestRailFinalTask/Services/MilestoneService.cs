@@ -12,8 +12,6 @@ namespace TestRailFinalTask.Services
 {
     public class MilestoneService : BaseService
     {
-        public static readonly string GET_MILESTONE = "index.php?/api/v2/get_milestone/{milestone_id}";
-
         public MilestoneService(ApiClient apiClient) : base(apiClient)
         {
         }
@@ -28,7 +26,15 @@ namespace TestRailFinalTask.Services
 
         public Milestone GetAsMilestone(string milestoneId)
         {
-            var request = new RestRequest(GET_MILESTONE);
+            var request = new RestRequest(Endpoints.GET_MILESTONE);
+            request.AddUrlSegment("milestone_id", milestoneId);
+
+            return _apiClient.Execute<Milestone>(request);
+        }
+
+        public Milestone GetMilestoneInvalid(string milestoneId)
+        {
+            var request = new RestRequest(Endpoints.POST_MILESTONE);
             request.AddUrlSegment("milestone_id", milestoneId);
 
             return _apiClient.Execute<Milestone>(request);
