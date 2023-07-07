@@ -21,6 +21,10 @@ namespace TestRailFinalTask.Pages
         private static readonly By AcceptProjectButton = By.Id("accept");
         private static readonly By AddedProjectMessageSuccess = By.ClassName("message");
         private static readonly By AddedProjectMessageError = By.XPath("//*[contains(text(),'Field')]");
+        private static readonly By DeleteProjectButton = By.ClassName("icon-small-delete");
+        private static readonly By DeleteConfirmationCheckbox = By.XPath("//span[@class='dialog-confirm-busy']//following::input");
+        private static readonly By ConfirmDeleteProjectButton = By.LinkText("OK");
+      
 
         public DashboardPage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl)
         {
@@ -90,6 +94,29 @@ namespace TestRailFinalTask.Pages
         public string CheckAddedProjectMessageError()
         {
             return Driver.FindElement(AddedProjectMessageError).Text;
+        }
+
+        public void ClickDeleteProjectButton()
+        {
+            Driver.FindElement(DeleteProjectButton).Click();
+        }
+
+        public void ActivateCheckbox()
+        {
+            Driver.FindElement(DeleteConfirmationCheckbox).Click();
+        }
+
+        public void ConfirmDeleteProject()
+        {
+            Driver.FindElement(ConfirmDeleteProjectButton).Click();
+        }
+
+        public DashboardPage DeleteProject()
+        {  
+            ClickDeleteProjectButton();
+            ActivateCheckbox();
+            ConfirmDeleteProject();
+            return this;
         }
     }
 }
