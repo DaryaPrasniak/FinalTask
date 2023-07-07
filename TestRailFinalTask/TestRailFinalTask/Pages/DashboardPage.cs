@@ -24,7 +24,9 @@ namespace TestRailFinalTask.Pages
         private static readonly By DeleteProjectButton = By.ClassName("icon-small-delete");
         private static readonly By DeleteConfirmationCheckbox = By.XPath("//span[@class='dialog-confirm-busy']//following::input");
         private static readonly By ConfirmDeleteProjectButton = By.LinkText("OK");
-      
+        private static readonly By RefineButton = By.Id("chart-refine");
+        private static readonly By DialogWindow = By.ClassName("ui-dialog");
+        private static readonly By CalendarOnDialogWindow = By.ClassName("charts-refine-calendar");
 
         public DashboardPage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl)
         {
@@ -117,6 +119,22 @@ namespace TestRailFinalTask.Pages
             ActivateCheckbox();
             ConfirmDeleteProject();
             return this;
+        }
+
+        public DashboardPage ClickRefineButton()
+        {
+            Driver.FindElement(RefineButton).Click();
+            return this;
+        }
+
+        public bool CheckDialogWindowDisplayed()
+        { 
+            return Driver.FindElement(DialogWindow).Displayed;
+        }
+
+        public bool CheckCalenderOnDialogWindowDisplayed()
+        {
+            return Driver.FindElement(CalendarOnDialogWindow).Displayed;
         }
     }
 }
