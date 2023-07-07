@@ -37,18 +37,7 @@ namespace TestRailFinalTask.Utilities.Configuration
             return builder.Build();
         }
 
-        public static AppSettings AppSettings
-        {
-            get
-            {
-                var appSettings = new AppSettings();
-                var child = Configuration.GetSection("AppSettings");
-
-                appSettings.URL = child["URL"];
-
-                return appSettings;
-            }
-        }
+        public static AppSettings AppSettings => AppSettings.GetInstance(Configuration);
 
         public static List<User?> Users
         {

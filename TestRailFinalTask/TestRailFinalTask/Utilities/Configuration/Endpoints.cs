@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestRailFinalTask.Utilities.Configuration
 {
-    public class Endpoints
+    public static class Endpoints
     {
         public static readonly string GET_SECTION = "index.php?/api/v2/get_section/{section_id}";
         public static readonly string GET_MILESTONE = "index.php?/api/v2/get_milestone/{milestone_id}";   
