@@ -1,0 +1,66 @@
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TestRailFinalTask.Pages
+{
+    public class LoginPage : BasePage
+    {
+        private static string END_POINT = "";
+
+        // Описание элементов
+        private static readonly By EmailInputBy = By.Id("name");
+        private static readonly By PswInputBy = By.Id("password");
+        private static readonly By LoginInButtonBy = By.Id("button_primary");
+
+        // Инициализация класса
+        public LoginPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
+        {
+        }
+        public LoginPage(IWebDriver driver) : base(driver, false)
+        {
+        }
+
+        public override bool IsPageOpened()
+        {
+            return WaitService.GetVisibleElement(LoginInButtonBy) != null;
+        }
+
+        protected override string GetEndpoint()
+        {
+            return END_POINT;
+        }
+
+        public void EmailInput(string email)
+        {
+            Driver.FindElement(EmailInputBy).SendKeys(email);
+        }
+
+        public void PswInput(string password)
+        {
+            Driver.FindElement(PswInputBy).SendKeys(password);
+        }
+
+        public void ClickLoginButton()
+        {
+            Driver.FindElement(LoginInButtonBy).Click();   
+        }
+
+        public void Login(string email, string password)
+        {
+            EmailInput(email);
+            PswInput(password);
+            ClickLoginButton();
+        }
+
+        public DashboardPage SuccessfulLogin(string email, string password)
+        {
+            Login(email, password);
+            return new DashboardPage(Driver);
+        }
+    }
+}
