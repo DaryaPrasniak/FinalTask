@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestRailFinalTask.Tests.GUI;
 using TestRailFinalTask.Core;
+using OpenQA.Selenium.Interactions;
 
 namespace TestRailFinalTask.Pages
 {
@@ -21,6 +22,8 @@ namespace TestRailFinalTask.Pages
         private static readonly By AcceptProjectButton = By.Id("accept");
         private static readonly By AddedProjectMessageSuccess = By.ClassName("message");
         private static readonly By AddedProjectMessageError = By.XPath("//*[contains(text(),'Field')]");
+        private static readonly By UpdateButton = By.Id("pendo-image-badge-035eb248");
+        private static readonly By UpdateButtonPopUp = By.XPath("//*[contains(text(),'streamlining')]");
 
         public DashboardPage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl)
         {
@@ -90,6 +93,15 @@ namespace TestRailFinalTask.Pages
         public string CheckAddedProjectMessageError()
         {
             return Driver.FindElement(AddedProjectMessageError).Text;
+        }
+
+        public string CheckPopUpWindowAppeared()
+        {
+            Actions action = new Actions(Driver);
+            Thread.Sleep(3000);
+            action.MoveToElement(Driver.FindElement(UpdateButton)).Build().Perform();
+
+            return Driver.FindElement(UpdateButtonPopUp).Text;
         }
     }
 }
