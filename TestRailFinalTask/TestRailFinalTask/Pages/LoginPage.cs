@@ -16,6 +16,7 @@ namespace TestRailFinalTask.Pages
         private static readonly By EmailInputBy = By.Id("name");
         private static readonly By PswInputBy = By.Id("password");
         private static readonly By LoginInButtonBy = By.Id("button_primary");
+        private static readonly By LoginErrorMessage = By.ClassName("loginpage-message-image");
 
         // Инициализация класса
         public LoginPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
@@ -61,6 +62,17 @@ namespace TestRailFinalTask.Pages
         {
             Login(email, password);
             return new DashboardPage(Driver);
+        }
+
+        public LoginPage IncorrectLogin(string email)
+        {
+            EmailInput(email);
+            ClickLoginButton();
+            return this;
+        }
+        public string CheckLoginErrorMessage()
+        {
+           return Driver.FindElement(LoginErrorMessage).Text;
         }
     }
 }

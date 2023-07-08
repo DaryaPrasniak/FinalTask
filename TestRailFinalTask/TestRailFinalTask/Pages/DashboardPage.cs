@@ -31,6 +31,9 @@ namespace TestRailFinalTask.Pages
         private static readonly By UploadFileButton = By.Id("entityAttachmentListEmptyIcon");
         private static readonly By FileForUploading = By.XPath("//input[@type='file']");
         private static readonly By AttachedFile = By.CssSelector(".attachments-library .attachment-name");      
+        private static readonly By SearchInput = By.Id("search_query");
+        private static readonly By SearchErrorMessage = By.XPath("//*[@id='messageDialog']/div[2]/p");
+
 
         public DashboardPage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl)
         {
@@ -180,5 +183,17 @@ namespace TestRailFinalTask.Pages
             return Driver.FindElement(AttachedFile).Text;
         }
             
+        public DashboardPage SearchFieldInput(string inputText)
+        {
+            Driver.FindElement(SearchInput).SendKeys(inputText);
+            Thread.Sleep(5000);
+            return this;
+        }
+
+        public string CheckSearchErrorDisplayed()
+        { 
+           return Driver.FindElement(SearchErrorMessage).Text;
+        }
+
     }
 }
