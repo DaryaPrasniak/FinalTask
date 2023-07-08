@@ -24,7 +24,9 @@ namespace TestRailFinalTask.Pages
         private static readonly By DeleteProjectButton = By.ClassName("icon-small-delete");
         private static readonly By DeleteConfirmationCheckbox = By.XPath("//span[@class='dialog-confirm-busy']//following::input");
         private static readonly By ConfirmDeleteProjectButton = By.LinkText("OK");
-      
+        private static readonly By SearchInput = By.Id("search_query");
+        private static readonly By SearchErrorMessage = By.XPath("//*[@id='messageDialog']/div[2]/p");
+
 
         public DashboardPage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl)
         {
@@ -118,5 +120,18 @@ namespace TestRailFinalTask.Pages
             ConfirmDeleteProject();
             return this;
         }
+
+        public DashboardPage SearchFieldInput(string inputText)
+        {
+            Driver.FindElement(SearchInput).SendKeys(inputText);
+            Thread.Sleep(5000);
+            return this;
+        }
+
+        public string CheckSearchErrorDisplayed()
+        { 
+           return Driver.FindElement(SearchErrorMessage).Text;
+        }
+
     }
 }
