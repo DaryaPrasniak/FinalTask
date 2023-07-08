@@ -12,7 +12,6 @@ namespace TestRailFinalTask.Pages
 {
     public class DashboardPage : BasePage
     {
-
         private static string END_POINT = "index.php?/dashboard";
 
         private static readonly By NavigationDashboard = By.Id("navigation-dashboard");
@@ -27,6 +26,11 @@ namespace TestRailFinalTask.Pages
         private static readonly By RefineButton = By.Id("chart-refine");
         private static readonly By DialogWindow = By.ClassName("ui-dialog");
         private static readonly By CalendarOnDialogWindow = By.ClassName("charts-refine-calendar");
+        private static readonly By ProjectLink = By.XPath("//*[@id='project-11']/td[3]/a");
+        private static readonly By AddMilestoneButton = By.LinkText("Add");
+        private static readonly By UploadFileButton = By.Id("entityAttachmentListEmptyIcon");
+        private static readonly By FileForUploading = By.XPath("//input[@type='file']");
+        private static readonly By AttachedFile = By.CssSelector(".attachments-library .attachment-name");      
 
         public DashboardPage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl)
         {
@@ -136,5 +140,45 @@ namespace TestRailFinalTask.Pages
         {
             return Driver.FindElement(CalendarOnDialogWindow).Displayed;
         }
+        public void OpenProject() 
+        {
+            Driver.FindElement(ProjectLink).Click();
+        }
+
+        public void AddMilestone()
+        {
+            Driver.FindElement(AddMilestoneButton).Click();
+        }
+
+        public void ClickUploadFileButton()
+        {
+            Driver.FindElement(UploadFileButton).Click();
+        }
+
+        public void AddFileForUploading(string filePath)
+        {
+            Driver.FindElement(FileForUploading).SendKeys(filePath);           
+        }
+
+        public bool WaitUntilUploaded()
+        {
+            return WaitService.GetVisibleElement(AttachedFile) != null;
+        }
+
+        public DashboardPage UploadFile(string filePath)
+        {
+            OpenProject();
+            AddMilestone();
+            ClickUploadFileButton();
+            AddFileForUploading(filePath);
+            WaitUntilUploaded();
+            return this;
+        }
+
+        public string CheckAttachedFileUploaded()
+        {
+            return Driver.FindElement(AttachedFile).Text;
+        }
+            
     }
 }
