@@ -26,14 +26,13 @@ namespace TestRailFinalTask.Pages
         private static readonly By RefineButton = By.Id("chart-refine");
         private static readonly By DialogWindow = By.ClassName("ui-dialog");
         private static readonly By CalendarOnDialogWindow = By.ClassName("charts-refine-calendar");
-        private static readonly By ProjectLink = By.XPath("//*[@id='project-22']/td[3]/a");
+        private static readonly By ProjectLink = By.CssSelector(".grid td:nth-child(3) a");
         private static readonly By AddMilestoneButton = By.LinkText("Add");
         private static readonly By UploadFileButton = By.Id("entityAttachmentListEmptyIcon");
         private static readonly By FileForUploading = By.XPath("//input[@type='file']");
         private static readonly By AttachedFile = By.CssSelector(".attachments-library .attachment-name");      
         private static readonly By SearchInput = By.Id("search_query");
         private static readonly By SearchErrorMessage = By.XPath("//*[@id='messageDialog']/div[2]/p");
-
 
         public DashboardPage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl)
         {
@@ -87,13 +86,6 @@ namespace TestRailFinalTask.Pages
             AddProject(projectName);
             return this;
         }
-
-        //public DashboardPage UnsuccessfullyAddedProject(string projectName)
-        //{
-        //    AddProject(projectName);
-        //    return this;
-        //    //return new DashboardPage(Driver);
-        //}
 
         public string CheckAddedProjectMessage()
         {
@@ -194,6 +186,5 @@ namespace TestRailFinalTask.Pages
         { 
            return Driver.FindElement(SearchErrorMessage).Text;
         }
-
     }
 }
