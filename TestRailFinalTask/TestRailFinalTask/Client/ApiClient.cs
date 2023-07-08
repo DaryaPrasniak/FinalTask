@@ -21,7 +21,7 @@ namespace TestRailFinalTask.Client
             var options = new RestClientOptions(Configurator.AppSettings.URL)
             {
                 Authenticator = new HttpBasicAuthenticator(Configurator.Admin.Username, Configurator.Admin.Password),
-                ThrowOnAnyError = true,
+                ThrowOnAnyError = false,
                 MaxTimeout = 10000
             };
 

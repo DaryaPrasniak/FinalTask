@@ -3,6 +3,7 @@ using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using TestRailFinalTask.Models;
@@ -29,17 +30,17 @@ namespace TestRailFinalTask.Tests.API
         [Test]
         public void GetMilestoneTestInvalid()
         {
-            var actualMilestone = _milestoneService.GetAsMilestone("1");
+            var actualMilestone = _milestoneService.GetMilestone("1000");
 
-            Assert.AreEqual(actualMilestone.Name, getInvalidMilestoneResponse.Name);
+            Assert.That(actualMilestone.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
         }
 
         [Test]
-        public void GetMilestoneTestInvalidEndpoint()
+        public void GetMilestoneTestInvalid2()
         {
-            var actualMilestone = _milestoneService.GetMilestoneInvalid("1");
+            var actualMilestone = _milestoneService.GetMilestone("textMilestone");
 
-            Assert.AreEqual(actualMilestone.Name, getMilestoneResponse.Name);
+            Assert.That(actualMilestone.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
         }
 
         [Test]
