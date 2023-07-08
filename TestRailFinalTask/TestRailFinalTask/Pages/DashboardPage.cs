@@ -26,7 +26,7 @@ namespace TestRailFinalTask.Pages
         private static readonly By RefineButton = By.Id("chart-refine");
         private static readonly By DialogWindow = By.ClassName("ui-dialog");
         private static readonly By CalendarOnDialogWindow = By.ClassName("charts-refine-calendar");
-        private static readonly By ProjectLink = By.XPath("//*[@id='project-11']/td[3]/a");
+        private static readonly By ProjectLink = By.XPath("//*[@id='project-22']/td[3]/a");
         private static readonly By AddMilestoneButton = By.LinkText("Add");
         private static readonly By UploadFileButton = By.Id("entityAttachmentListEmptyIcon");
         private static readonly By FileForUploading = By.XPath("//input[@type='file']");
