@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +11,16 @@ namespace TestRailFinalTask.Tests.GUI
 {
     public class AddDeleteEntitiesTest : BaseGUITest
     {
-        [Test]
+        [Test(Description = "AddProject")]
+        [Description("Verify user can add a project")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("User")]
+        [AllureSuite("PassedSuite")]
+        [AllureSubSuite("GUI")]
+        [AllureIssue(name: "TMS-12")]
+        [AllureTms(name: "TMS-13")]
+        [AllureTag("Smoke")]
+        [AllureLink("https://daryaprasniak1.testrail.io/")]
         public void AddAProject()
         {
             string projectName = "New test";
@@ -25,7 +36,16 @@ namespace TestRailFinalTask.Tests.GUI
             Assert.That(dashboardPage.CheckAddedProjectMessage, Is.EqualTo(expectedMessage));
         }
 
-        [Test]
+        [Test(Description = "DeleteProject")]
+        [Description("Verify user can delete a project")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("User")]
+        [AllureSuite("PassedSuite")]
+        [AllureSubSuite("GUI")]
+        [AllureIssue(name: "TMS-12")]
+        [AllureTms(name: "TMS-13")]
+        [AllureTag("Smoke")]
+        [AllureLink("https://daryaprasniak1.testrail.io/")]
         public void DeleteProject()
         {
             string projectName = "New test for delete";

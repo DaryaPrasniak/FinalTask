@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +11,16 @@ namespace TestRailFinalTask.Tests.GUI
 {
     public class PopUpWindowTest : BaseGUITest
     {
-        [Test]
+        [Test(Description = "PopUpWindowOpened")]
+        [Description("Verify the pop up is displayed if hover over 'Upgrade' button on the Dashboard page")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("User")]
+        [AllureSuite("PassedSuite")]
+        [AllureSubSuite("GUI")]
+        [AllureIssue(name: "TMS-12")]
+        [AllureTms(name: "TMS-13")]
+        [AllureTag("Smoke")]
+        [AllureLink("https://daryaprasniak1.testrail.io/")]
         public void PopUpWindow()
         {
             string email = "dashapr@mail.ru";

@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium.Chrome;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,16 @@ namespace TestRailFinalTask.Tests.GUI
 {
     public class LoginTest : BaseGUITest
     {
-        [Test]
+        [Test(Description = "SuccessfulLogin")]
+        [Description("Verify user can login with valid credentials")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("User")]
+        [AllureSuite("PassedSuite")]
+        [AllureSubSuite("GUI")]
+        [AllureIssue("TMS-12")]
+        [AllureTms("TMS-13")]
+        [AllureTag("Smoke")]
+        [AllureLink("https://daryaprasniak1.testrail.io/")]       
         public void SuccessLoginTest()
         {
             string email = "dashapr@mail.ru";
@@ -24,7 +35,16 @@ namespace TestRailFinalTask.Tests.GUI
             Assert.IsTrue(dashboardPage.CheckDashboardOpened());
         }
 
-        [Test]
+        [Test(Description = "IncorrectLogin")]
+        [Description("Verify user cannot login with invalid credentials(blank password field)")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("User")]
+        [AllureSuite("PassedSuite")]
+        [AllureSubSuite("GUI")]
+        [AllureIssue("TMS-12")]
+        [AllureTms("TMS-13")]
+        [AllureTag("Smoke")]
+        [AllureLink("https://daryaprasniak1.testrail.io/")]
         public void IncorrectLoginTest()
         {
             string email = "dashapr@mail.ru";
@@ -37,7 +57,16 @@ namespace TestRailFinalTask.Tests.GUI
             Assert.That(loginPage.CheckLoginErrorMessage, Is.EqualTo(expectedErrorMessage));
         }
 
-        [Test]
+        [Test(Description = "SuccessLoginTestForScreenshot")]
+        [Description("Verify user can login with valid credentials")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("User")]
+        [AllureSuite("FailedSuite")]
+        [AllureSubSuite("GUI")]
+        [AllureIssue("TMS-12")]
+        [AllureTms("TMS-13")]
+        [AllureTag("Smoke")]
+        [AllureLink("https://daryaprasniak1.testrail.io/")]
         public void SuccessLoginTestForScreenshot()
         {
             string email = "dashapr@mail.ru";

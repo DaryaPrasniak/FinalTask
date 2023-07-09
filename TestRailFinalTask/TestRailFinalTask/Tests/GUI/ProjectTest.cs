@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,16 @@ namespace TestRailFinalTask.Tests.GUI
     {
         [TestCase("positive test case 100500")]
         [TestCase("A")]
+        [Test(Description = "AddAProject")]
+        [Description("Verify user can add a project name (20 characters)")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("User")]
+        [AllureSuite("PassedSuite")]
+        [AllureSubSuite("GUI")]
+        [AllureIssue(name: "TMS-12")]
+        [AllureTms(name: "TMS-13")]
+        [AllureTag("Smoke")]
+        [AllureLink("https://daryaprasniak1.testrail.io/")]
         public void AddAProject(string projectName)
         {
             string email = "dashapr@mail.ru";
@@ -26,6 +38,16 @@ namespace TestRailFinalTask.Tests.GUI
         }
 
         [TestCase("")]
+        [Test(Description = "AddNullProject")]
+        [Description("Verify user cannot add a project with blank name field")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("User")]
+        [AllureSuite("PassedSuite")]
+        [AllureSubSuite("GUI")]
+        [AllureIssue(name: "TMS-12")]
+        [AllureTms(name: "TMS-13")]
+        [AllureTag("Smoke")]
+        [AllureLink("https://daryaprasniak1.testrail.io/")]
         public void AddNullProject(string projectName)
         {
             string email = "dashapr@mail.ru";
@@ -40,7 +62,16 @@ namespace TestRailFinalTask.Tests.GUI
             Assert.That(dashboardPage.CheckAddedProjectMessageError, Is.EqualTo(expectedMessage));
         }
 
-        [Test]
+        [Test(Description = "SearchFieldCharactersLimit")]
+        [Description("Verify user cannot input more than 250 characters to search field")]
+        [AllureSeverity(SeverityLevel.minor)]
+        [AllureOwner("User")]
+        [AllureSuite("PassedSuite")]
+        [AllureSubSuite("GUI")]
+        [AllureIssue(name: "TMS-12")]
+        [AllureTms(name: "TMS-13")]
+        [AllureTag("Regression")]
+        [AllureLink("https://daryaprasniak1.testrail.io/")]
         public void SearchField()
         {
             string email = "dashapr@mail.ru";
