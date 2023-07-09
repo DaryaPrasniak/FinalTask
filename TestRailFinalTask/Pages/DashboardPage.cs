@@ -186,6 +186,7 @@ namespace TestRailFinalTask.Pages
             AddMilestone();
             ClickUploadFileButton();
             AddFileForUploading(filePath);
+            Thread.Sleep(3000);
             ClickCloseIcon();
             ClickNewUploadFileButton();
             WaitUntilUploaded();
