@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NLog;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -10,15 +11,14 @@ namespace TestRailFinalTask.Pages
 {
     public class LoginPage : BasePage
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private static string END_POINT = "";
 
-        // Описание элементов
         private static readonly By EmailInputBy = By.Id("name");
         private static readonly By PswInputBy = By.Id("password");
         private static readonly By LoginInButtonBy = By.Id("button_primary");
         private static readonly By LoginErrorMessage = By.ClassName("loginpage-message-image");
 
-        // Инициализация класса
         public LoginPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
         {
         }
@@ -61,6 +61,7 @@ namespace TestRailFinalTask.Pages
         public DashboardPage SuccessfulLogin(string email, string password)
         {
             Login(email, password);
+            _logger.Info(message: "Navigate to DashboardPage");
             return new DashboardPage(Driver);
         }
 
@@ -68,8 +69,10 @@ namespace TestRailFinalTask.Pages
         {
             EmailInput(email);
             ClickLoginButton();
+            _logger.Info(message: "Navigate to LoginPage");
             return this;
         }
+
         public string CheckLoginErrorMessage()
         {
            return Driver.FindElement(LoginErrorMessage).Text;

@@ -33,41 +33,5 @@ namespace TestRailFinalTask.Services
 
             return _apiClient.Execute<Section>(request);
         }
-
-        public Task<RestResponse> GetSectionAsync(string sectionId)
-        {
-            var request = new RestRequest("index.php?/api/v2/get_section/{section_id}")
-                .AddUrlSegment("section_id", sectionId);
-
-            return _apiClient.ExecuteAsync(request);
-        }
-
-        public Section GetAsSectionAsync(string sectionId)
-        {
-            var request = new RestRequest("index.php?/api/v2/get_section/{section_id}")
-                .AddUrlSegment("section_id", sectionId);
-
-            return _apiClient.ExecuteAsync<Section>(request).Result;
-        }
-
-        public Task<Section> AddSectionAsync(Section section)
-        {
-            var request = new RestRequest("index.php?/api/v2/add_section/{section_id}", Method.Post)
-            .AddHeader("Content-Type", "application/json")
-                .AddBody(section);
-
-            return _apiClient.ExecuteAsync<Section>(request);
-        }
-
-        public RestResponse UpdateSection(string sectionId, Section section)
-        {
-            return null;
-        }
-
-        public RestResponse DeleteSection(string sectionId)
-        {
-            return null;
-        }
-
     }
 }

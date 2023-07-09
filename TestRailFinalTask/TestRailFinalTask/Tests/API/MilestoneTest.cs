@@ -23,6 +23,7 @@ namespace TestRailFinalTask.Tests.API
         public void GetMilestoneTest()
         {
             var actualMilestone = _milestoneService.GetAsMilestone("1");
+            _logger.Info("Actual Milestone: " + actualMilestone.ToString());
 
             Assert.AreEqual(actualMilestone.Name, getMilestoneResponse.Name);
         }
@@ -31,6 +32,7 @@ namespace TestRailFinalTask.Tests.API
         public void GetMilestoneTestInvalid()
         {
             var actualMilestone = _milestoneService.GetMilestone("1000");
+            _logger.Info("Actual Milestone: " + actualMilestone.ToString());
 
             Assert.That(actualMilestone.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
         }
@@ -39,6 +41,7 @@ namespace TestRailFinalTask.Tests.API
         public void GetMilestoneTestInvalid2()
         {
             var actualMilestone = _milestoneService.GetMilestone("textMilestone");
+            _logger.Info("Actual Milestone: " + actualMilestone.ToString());
 
             Assert.That(actualMilestone.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
         }
@@ -47,6 +50,7 @@ namespace TestRailFinalTask.Tests.API
         public void AddMilestoneTest()
         {
             var actualMilestone = _milestoneService.AddMilestone(addedMilestoneResponse.ProjectId, addedMilestoneResponse);
+            _logger.Info("Actual Milestone: " + actualMilestone.ToString());
 
             Assert.AreEqual(actualMilestone.Name, "July Test");
         }

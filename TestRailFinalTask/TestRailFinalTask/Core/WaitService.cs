@@ -32,21 +32,5 @@ namespace TestRailFinalTask.Core
                 return null;
             }
         }
-
-        public IAlert GetAlertOnPage()
-        {
-            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
-            return _wait.Until(ExpectedConditions.AlertIsPresent());
-        }
-
-        public IWebElement ExistsElement(By by)
-        {
-            var fluentWait = new DefaultWait<IWebDriver?>(_driver);
-            fluentWait.Timeout = TimeSpan.FromSeconds(5);
-            fluentWait.PollingInterval = TimeSpan.FromMilliseconds(50);
-            fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-
-            return fluentWait.Until(ExpectedConditions.ElementIsVisible(by));
-        }
     }
 }
