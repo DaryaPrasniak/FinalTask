@@ -175,6 +175,11 @@ namespace TestRailFinalTask.Pages
             WaitService.GetVisibleElement(AttachedFile);
         }
 
+        public void WaitUntilPopUpDisplayed()
+        {
+            WaitService.GetVisibleElement(SearchErrorMessage);
+        }
+
         public DashboardPage UploadFile(string filePath)
         {
             OpenProject();
@@ -195,7 +200,7 @@ namespace TestRailFinalTask.Pages
         public DashboardPage SearchFieldInput(string inputText)
         {
             Driver.FindElement(SearchInput).SendKeys(inputText);
-            Thread.Sleep(5000);
+            WaitUntilPopUpDisplayed();
             return this;
         }
 
