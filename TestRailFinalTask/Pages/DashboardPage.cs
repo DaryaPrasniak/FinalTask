@@ -183,12 +183,18 @@ namespace TestRailFinalTask.Pages
             WaitService.GetVisibleElement(SearchErrorMessage);
         }
 
+        public void WaitUntilAttachedFileDisplayed()
+        {
+            WaitService.GetVisibleElement(AttachedFile);
+        }
+
         public DashboardPage UploadFile(string filePath)
         {
             OpenProject();
             AddMilestone();
             ClickUploadFileButton();
             AddFileForUploading(filePath);
+            WaitUntilAttachedFileDisplayed();
             ClickCloseIcon();
             ClickNewUploadFileButton();
             WaitUntilUploaded();
