@@ -1,0 +1,9 @@
+{
+  "description": "Test Milestone",
+  "id": 1,
+  "is_completed": true,
+  "name": "Release157",
+  "project_id": 1,
+  "refs": "RF-1, RF-2",
+  "url": "http://testrail/index.php?/milestones/view/1"
+}
