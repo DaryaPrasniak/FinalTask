@@ -18,7 +18,7 @@ namespace TestRailFinalTask.Services
 
         public RestResponse GetMilestone(string milestoneId)
         {
-            var request = new RestRequest(Endpoints.GET_MILESTONE)
+            var request = new RestRequest(Endpoints.GET_MILESTONE_URL)
                 .AddUrlSegment("milestone_id", milestoneId);
 
             return _apiClient.Execute(request);
@@ -26,7 +26,7 @@ namespace TestRailFinalTask.Services
 
         public Milestone GetAsMilestone(string milestoneId)
         {
-            var request = new RestRequest(Endpoints.GET_MILESTONE);
+            var request = new RestRequest(Endpoints.GET_MILESTONE_URL);
             request.AddUrlSegment("milestone_id", milestoneId);
 
             return _apiClient.Execute<Milestone>(request);
@@ -34,7 +34,7 @@ namespace TestRailFinalTask.Services
 
         public Milestone AddMilestone(int projectId, Milestone newMilestone)
         {
-            var request = new RestRequest(Endpoints.POST_MILESTONE, Method.Post)
+            var request = new RestRequest(Endpoints.POST_MILESTONE_URL, Method.Post)
                 .AddUrlSegment("project_id", projectId)
                 .AddHeader("Content-Type", "application/json")
                 .AddBody(newMilestone);

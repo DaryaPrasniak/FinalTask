@@ -9,11 +9,20 @@ namespace TestRailFinalTask.Models
 {
     public class Milestone
     {
-        [JsonProperty("id")] public int Id { get; set; }
-        [JsonProperty("name")] public string Name { get; set; } = string.Empty;
-        [JsonProperty("description")] public string Description { get; set; } = string.Empty;
-        [JsonProperty("is_completed")] public bool IsCompleted { get; set; }
-        [JsonProperty("project_id")] public int ProjectId { get; set; }
+        [JsonProperty("id")] 
+        public int Id { get; set; }
+
+        [JsonProperty("name")] 
+        public string Name { get; set; } = string.Empty;
+
+        [JsonProperty("description")] 
+        public string Description { get; set; } = string.Empty;
+
+        [JsonProperty("is_completed")] 
+        public bool IsCompleted { get; set; }
+
+        [JsonProperty("project_id")] 
+        public int ProjectId { get; set; }
 
         public override string ToString()
         {
@@ -40,6 +49,7 @@ namespace TestRailFinalTask.Models
             hashCode.Add(Description);
             hashCode.Add(IsCompleted);
             hashCode.Add(ProjectId);
+
             return hashCode.ToHashCode();
         }
     }

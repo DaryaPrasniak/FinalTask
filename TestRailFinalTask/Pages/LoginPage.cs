@@ -62,6 +62,7 @@ namespace TestRailFinalTask.Pages
         {
             Login(email, password);
             _logger.Info(message: "Navigate to DashboardPage");
+
             return new DashboardPage(Driver);
         }
 
@@ -69,7 +70,8 @@ namespace TestRailFinalTask.Pages
         {
             EmailInput(email);
             ClickLoginButton();
-            _logger.Info(message: "Navigate to LoginPage");
+            _logger.Info(message: "Reloaded LoginPage");
+
             return this;
         }
 

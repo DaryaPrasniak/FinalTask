@@ -3,6 +3,7 @@ using NUnit.Allure.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TestRailFinalTask.Pages;
@@ -23,18 +24,19 @@ namespace TestRailFinalTask.Tests.GUI
         [AllureLink("https://daryaprasniak1.testrail.io/")]
         public void UploadFile()
         {
+            string fileName = "TestDoc.docx";
             string projectName = "New test";
             string email = "dashapr@mail.ru";
             string password = "!Qwertyu123";
-            string filePath = "C:/Users/DaryaPrasniak/TMSTests/TestDoc.docx";
+            string directoryName = "/TestData/";
+
+            var fullFilePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + directoryName + fileName;
 
             var dashboardPage = new LoginPage(Driver, true)
                 .SuccessfulLogin(email, password)
-                .UploadFile(filePath);
+                .UploadFile(fullFilePath);
 
-            var expectedFileName = "TestDoc.docx";
-
-            Assert.That(dashboardPage.CheckAttachedFileUploaded, Is.EqualTo(expectedFileName));
+            Assert.That(dashboardPage.CheckAttachedFileUploaded, Is.EqualTo(fileName));
         }
     }
 }

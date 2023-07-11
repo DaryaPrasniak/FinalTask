@@ -12,13 +12,26 @@ namespace TestRailFinalTask.Models
 {
     public class Section
     {
-        [JsonProperty("id")] public int Id { get; set; }
-        [JsonProperty("name")] public string Name { get; set; } = string.Empty;
-        [JsonProperty("description")] public string Description { get; set; } = string.Empty;
-        [JsonProperty("depth")] public int Depth { get; set; }
-        [JsonProperty("display_order")] public int DisplayOrder { get; set; }
-        [JsonProperty("parent_id")] public int ParentId { get; set; }
-        [JsonProperty("suite_id")] public int SuiteId { get; set; }
+        [JsonProperty("id")] 
+        public int Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; } = string.Empty;
+
+        [JsonProperty("description")]
+        public string Description { get; set; } = string.Empty;
+
+        [JsonProperty("depth")]
+        public int Depth { get; set; }
+
+        [JsonProperty("display_order")] 
+        public int DisplayOrder { get; set; }
+
+        [JsonProperty("parent_id")]
+        public int ParentId { get; set; }
+
+        [JsonProperty("suite_id")] 
+        public int SuiteId { get; set; }
 
         public override string ToString()
         {
@@ -49,6 +62,7 @@ namespace TestRailFinalTask.Models
             hashCode.Add(DisplayOrder);
             hashCode.Add(ParentId);
             hashCode.Add(SuiteId);
+
             return hashCode.ToHashCode();
         }
     }

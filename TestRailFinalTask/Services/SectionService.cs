@@ -12,7 +12,7 @@ namespace TestRailFinalTask.Services
 {
     public class SectionService : BaseService
     {
-        public static readonly string GET_SECTION = "index.php?/api/v2/get_section/{section_id}";
+        public static readonly string GET_SECTION_URL = "index.php?/api/v2/get_section/{section_id}";
 
         public SectionService(ApiClient apiClient) : base(apiClient)
         {
@@ -20,7 +20,7 @@ namespace TestRailFinalTask.Services
 
         public RestResponse GetSection(string sectionId)
         {
-            var request = new RestRequest(Endpoints.GET_SECTION)
+            var request = new RestRequest(Endpoints.GET_SECTION_URL)
                 .AddUrlSegment("section_id", sectionId);
 
             return _apiClient.Execute(request);
@@ -28,7 +28,7 @@ namespace TestRailFinalTask.Services
 
         public Section GetAsSection(string sectionId)
         {
-            var request = new RestRequest(GET_SECTION)
+            var request = new RestRequest(GET_SECTION_URL)
                 .AddUrlSegment("section_id", sectionId);
 
             return _apiClient.Execute<Section>(request);

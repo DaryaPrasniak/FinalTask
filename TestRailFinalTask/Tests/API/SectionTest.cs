@@ -23,7 +23,7 @@ namespace TestRailFinalTask.Tests.API
         [Test]
         public void GetSectionTest()
         {
-            var request = new RestRequest(Endpoints.GET_SECTION)
+            var request = new RestRequest(Endpoints.GET_SECTION_URL)
                 .AddUrlSegment("section_id", "1");
             var response = _apiClient.Execute(request);
 

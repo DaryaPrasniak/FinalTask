@@ -89,6 +89,7 @@ namespace TestRailFinalTask.Pages
         public DashboardPage NewelyAddedProject(string projectName)
         {
             AddProject(projectName);
+
             return this;
         }
 
@@ -122,12 +123,14 @@ namespace TestRailFinalTask.Pages
             ClickDeleteProjectButton();
             ActivateCheckbox();
             ConfirmDeleteProject();
+
             return this;
         }
 
         public DashboardPage ClickRefineButton()
         {
             Driver.FindElement(RefineButton).Click();
+
             return this;
         }
 
@@ -186,10 +189,10 @@ namespace TestRailFinalTask.Pages
             AddMilestone();
             ClickUploadFileButton();
             AddFileForUploading(filePath);
-            Thread.Sleep(3000);
             ClickCloseIcon();
             ClickNewUploadFileButton();
             WaitUntilUploaded();
+
             return this;
         }
 
@@ -202,6 +205,7 @@ namespace TestRailFinalTask.Pages
         {
             Driver.FindElement(SearchInput).SendKeys(inputText);
             WaitUntilPopUpDisplayed();
+
             return this;
         }
 
@@ -210,11 +214,15 @@ namespace TestRailFinalTask.Pages
             return Driver.FindElement(SearchErrorMessage).Text;
         }
 
+        public IWebElement GetUpdateButton()
+        {
+            return WaitService.GetVisibleElement(UpdateButton);
+        }
+
         public string CheckPopUpWindowAppeared()
         {
             Actions action = new Actions(Driver);
-            Thread.Sleep(3000);
-            action.MoveToElement(Driver.FindElement(UpdateButton)).Build().Perform();
+            action.MoveToElement(GetUpdateButton()).Build().Perform();          
 
             return Driver.FindElement(UpdateButtonPopUp).Text;
         }
